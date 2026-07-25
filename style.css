@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>اضافة مبيعات</title>
+  <style>
+    body { font-family: Arial; background: #f4f4f4; padding: 20px; text-align: center; }
+    input, button { padding: 10px; margin: 10px; width: 80%; border-radius: 5px; border: 1px solid #ccc; }
+    button { background: #28a745; color: white; border: none; cursor: pointer; }
+    a { display: inline-block; margin-top: 20px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <h1>تسجيل مبيعات جديدة</h1>
+  <input type="text" id="product" placeholder="اسم المنتج">
+  <input type="number" id="price" placeholder="السعر">
+  <button onclick="saveSale()">حفظ</button>
+  <a href="dashboard.html">الرجوع للوحة التحكم</a>
+
+  <script>
+    function saveSale() {
+      let product = document.getElementById('product').value;
+      let price = parseFloat(document.getElementById('price').value);
+
+      if(product == "" || price == "") {
+        alert("اكتبي اسم المنتج والسعر");
+        return;
+      }
+
+      let sales = JSON.parse(localStorage.getItem('sales')) || [];
+      sales.push({product: product, price: price});
+      localStorage.setItem('sales', JSON.stringify(sales));
+
+      alert("تم الحفظ بنجاح!");
+      document.getElementById('product').value = "";
+      document.getElementById('price').value = "";
+    }
+  </script>
+</body>
+</html>
+
