@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم</title>
+    <style>
+        body { font-family: Arial; text-align: center; padding: 20px; background: #f4f4f4; }
+        .screen { display: none; }
+        .screen.active { display: block; }
+        button { padding: 12px 25px; font-size: 16px; background: #007bff; color: white; border: none; border-radius: 5px; margin: 5px; }
+        input { padding: 10px; margin: 5px; width: 80%; border-radius: 5px; border: 1px solid #ccc; }
+        ul { list-style: none; padding: 0; }
+        .menu a { display: block; padding: 10px; background: white; margin: 10px; text-decoration: none; border-radius: 5px; color: black; }
+    </style>
+</head>
+<body>
+
+<!-- 1. الشاشة الرئيسية -->
+<div id="main" class="screen active">
+    <h2>الشاشة الرئيسية</h2>
+    <div class="menu">
+        <a href="#" onclick="showScreen('dashboard')">لوحة التحكم</a>
+        <a href="#" onclick="showScreen('register')">انشاء حساب</a>
+        <a href="#" onclick="showScreen('sales')">شاشة المبيعات</a>
+    </div>
+</div>
+
+<!-- 2. شاشة التحكم -->
+<div id="dashboard" class="screen">
+    <h2>شاشة التحكم</h2>
+    <ul>
+        <li>عدد المستخدمين: 150</li>
+        <li>عدد المنتجات: 20</li>
+        <li>المبيعات اليوم: 50000</li>
+    </ul>
+    <br>
+    <a href="#" onclick="showScreen('main')">← الرجوع للرئيسية</a>
+</div>
+
+<!-- 3. شاشة انشاء حساب -->
+<div id="register" class="screen">
+    <h2>انشاء حساب</h2>
+    <input type="text" placeholder="الاسم">
+    <br>
+    <input type="email" placeholder="الايميل">
+    <br>
+    <input type="password" placeholder="كلمة السر">
+    <br>
+    <button>تسجيل</button>
+    <br><br>
+    <a href="#" onclick="showScreen('main')">← الرجوع للرئيسية</a>
+</div>
+
+<!-- 4. شاشة المبيعات -->
+<div id="sales" class="screen">
+    <h2>شاشة المبيعات</h2>
+    <p>مبيعات اليوم: 50000 جنيه</p>
+    <p>مبيعات الاسبوع: 320000 جنيه</p>
+    <p>مبيعات الشهر: 1200000 جنيه</p>
+    <br>
+    <a href="#" onclick="showScreen('main')">← الرجوع للرئيسية</a>
+</div>
+
+<script>
+function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+}
+</script>
+
+</body>
+</html>
